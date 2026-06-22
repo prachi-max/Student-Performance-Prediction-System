@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class PredictionService {
 
   // FIX: Was pointing to Render URL — now points to local Flask server
-  private apiUrl = 'http://localhost:5001';
+ private apiUrl = "https://student-performance-prediction-system-1v50.onrender.com";
 
   constructor(private http: HttpClient) {}
 

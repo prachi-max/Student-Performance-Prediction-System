@@ -6,10 +6,12 @@ require("dotenv").config();
 const app = express();
 
 // ── MIDDLEWARE ─────────────────────────────────────────────────────────────
+// Allow both local testing and any production Vercel subdomain
 app.use(cors({
-  origin: ["http://localhost:4200", "http://localhost:3000"],
+  origin: ["http://localhost:4200", "http://localhost:3000", /\.vercel\.app$/],
   credentials: true
 }));
+
 app.use(express.json());
 
 // ── ROUTES ─────────────────────────────────────────────────────────────────

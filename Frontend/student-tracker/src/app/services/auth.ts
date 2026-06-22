@@ -7,7 +7,7 @@ export class AuthService {
 
   // FIX: login() was pointing to hardcoded Render URL, register() to localhost
   // Now both use the same local URL consistently
-  private apiUrl = "http://localhost:5000/api/auth";
+  private apiUrl = "https://onrender.com";
 
   constructor(private http: HttpClient, private router: Router) {}
 

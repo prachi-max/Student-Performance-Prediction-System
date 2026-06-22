@@ -6,8 +6,8 @@ export class TaskService {
 
   // FIX: Was mixing hardcoded Render URLs with this.apiUrl — inconsistent
   // All URLs now use consistent local base URLs
-  private nodeApi = "http://localhost:5000/api";
-  private pythonApi = "http://localhost:5001";
+private nodeApi = "https://onrender.com";
+private pythonApi = "https://student-performance-prediction-system-1v50.onrender.com";
 
   constructor(private http: HttpClient) {}
 
