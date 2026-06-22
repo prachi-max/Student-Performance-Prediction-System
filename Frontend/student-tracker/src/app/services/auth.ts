@@ -5,10 +5,8 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  // UPDATED: Points to your exact deployed project instance with the sub-route
-  // This makes Angular look for a server-side setting instead of a hardcoded string
-private apiUrl = "https://onrender.com";
-
+  // Node/Express backend on Render
+  private apiUrl = "https://student-performance-prediction-system-1v50.onrender.com/api/auth";
 
   constructor(private http: HttpClient, private router: Router) {}
 

@@ -4,14 +4,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class TaskService {
 
-  // FIX: Was mixing hardcoded Render URLs with this.apiUrl — inconsistent
-  // All URLs now use consistent local base URLs
-// Fix the nodeApi line to point to the correct subfolder path:
-private nodeApi = "https://onrender.com";
+  // Node/Express backend (Render) — handles tasks, streak
+  private nodeApi = "https://student-performance-prediction-system-1v50.onrender.com/api";
 
-// Ensure the pythonApi also matches the layout of your Node app:
-private pythonApi = "https://onrender.com";
-
+  // Flask/Python ML backend — needs its OWN separate Render service
+  // Deploy app.py separately and replace this URL
+  private pythonApi = "https://<YOUR-FLASK-RENDER-URL>";
 
   constructor(private http: HttpClient) {}
 
@@ -31,10 +29,11 @@ private pythonApi = "https://onrender.com";
     return this.http.delete(`${this.nodeApi}/tasks/${id}`);
   }
 
+  // NOTE: On your backend, make sure the streak route is defined BEFORE
+  // the generic /tasks/:id route, otherwise Express captures "streak" as an id
   getStreak(userId: string) {
-  // Make sure this doesn't clash with getTasks route on backend
-  return this.http.get(`${this.nodeApi}/tasks/streak/${userId}`);
-}
+    return this.http.get(`${this.nodeApi}/tasks/streak/${userId}`);
+  }
 
   getSubjectPrediction() {
     return this.http.get(`${this.nodeApi}/predict/subject-performance`);
@@ -43,5 +42,4 @@ private pythonApi = "https://onrender.com";
   getAIRecommendations() {
     return this.http.get(`${this.pythonApi}/api/recommend-tasks`);
   }
-  
 }
