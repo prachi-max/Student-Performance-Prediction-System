@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  // FIX: login() was pointing to hardcoded Render URL, register() to localhost
-  // Now both use the same local URL consistently
+  // UPDATED: Points to your exact deployed project instance with the sub-route
   private apiUrl = "https://onrender.com";
 
   constructor(private http: HttpClient, private router: Router) {}
