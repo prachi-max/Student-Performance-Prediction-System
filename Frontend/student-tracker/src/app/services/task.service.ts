@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class TaskService {
 
   // Node/Express backend (Render) — handles tasks, streak
-  private nodeApi = "https://student-performance-prediction-system-1v50.onrender.com/api";
+  private nodeApi = "https://student-performance-prediction-system-1-cggu.onrender.com";
 
   // Flask/Python ML backend — needs its OWN separate Render service
   // Deploy app.py separately and replace this URL

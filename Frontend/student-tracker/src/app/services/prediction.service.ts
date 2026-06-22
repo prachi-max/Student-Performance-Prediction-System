@@ -10,7 +10,7 @@ export class PredictionService {
   private pythonApi = "https://<YOUR-FLASK-RENDER-URL>";
 
   // Node/Express backend
-  private nodeApi = "https://student-performance-prediction-system-1v50.onrender.com/api";
+  private nodeApi = "https://student-performance-prediction-system-1-cggu.onrender.com";
 
   constructor(private http: HttpClient) {}
 
