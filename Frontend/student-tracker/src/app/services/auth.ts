@@ -7,7 +7,7 @@ export class AuthService {
 
   // UPDATED: Points to your exact deployed project instance with the sub-route
   // This makes Angular look for a server-side setting instead of a hardcoded string
-private apiUrl = (window as any).env?.API_URL || "https://onrender.com";
+private apiUrl = "https://onrender.com";
 
 
   constructor(private http: HttpClient, private router: Router) {}

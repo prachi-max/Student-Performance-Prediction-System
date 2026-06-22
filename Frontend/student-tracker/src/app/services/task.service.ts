@@ -6,8 +6,12 @@ export class TaskService {
 
   // FIX: Was mixing hardcoded Render URLs with this.apiUrl — inconsistent
   // All URLs now use consistent local base URLs
+// Fix the nodeApi line to point to the correct subfolder path:
 private nodeApi = "https://onrender.com";
-private pythonApi = "https://student-performance-prediction-system-1v50.onrender.com";
+
+// Ensure the pythonApi also matches the layout of your Node app:
+private pythonApi = "https://onrender.com";
+
 
   constructor(private http: HttpClient) {}
 
