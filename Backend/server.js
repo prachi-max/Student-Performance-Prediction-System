@@ -1,22 +1,24 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");          // ← import ONCE only
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
 
 // ── MIDDLEWARE ─────────────────────────────────────────────────────────────
 app.use(cors({
-  origin: [
-    "https://student-performance-prediction-system-dlgynglig.vercel.app",
-    "http://localhost:3000"            // keep for local dev
-  ],
+  origin: function(origin, callback) {
+    // Allow any vercel.app subdomain, localhost, and no-origin (Postman/curl)
+    if (!origin || origin.match(/vercel\.app$/) || origin === "http://localhost:3000") {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
-
-
 
 app.use(express.json());
 

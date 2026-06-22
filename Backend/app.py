@@ -1,9 +1,10 @@
 import os
-from flask import Flask
-from flask_cors import CORS          # ← import ONCE only
+import re
+from flask import Flask, request
+from flask_cors import CORS
 from dotenv import load_dotenv
 
-load_dotenv()                        # must be before any os.environ access
+load_dotenv()
 
 from routes.prediction_routes import prediction_bp
 from routes.recommendation_routes import recommendation_bp
@@ -11,18 +12,24 @@ from routes.recommendation_routes import recommendation_bp
 app = Flask(__name__)
 
 # ── CORS ───────────────────────────────────────────────────────────────────
+def cors_origin_check(origin):
+    if not origin:
+        return False
+    # Allow any vercel.app subdomain or localhost
+    if re.search(r'vercel\.app$', origin):
+        return True
+    if origin == "http://localhost:3000":
+        return True
+    return False
+
 CORS(app,
-     origins=[
-         "https://student-performance-prediction-system-dlgynglig.vercel.app",
-         "http://localhost:3000"      # keep for local dev
-     ],
+     origins=cors_origin_check,
      supports_credentials=True,
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
      allow_headers=["Content-Type", "Authorization"]
 )
 
 # ── BLUEPRINTS ─────────────────────────────────────────────────────────────
-# Register AFTER CORS is applied
 app.register_blueprint(prediction_bp)
 app.register_blueprint(recommendation_bp)
 
@@ -34,4 +41,4 @@ def home():
 # ── ENTRY POINT ────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5001))
-    app.run(host="0.0.0.0", port=port, debug=False)  # debug=False in production
+    app.run(host="0.0.0.0", port=port, debug=False)
