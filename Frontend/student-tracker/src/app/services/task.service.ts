@@ -4,12 +4,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class TaskService {
 
-  // Node/Express backend (Render) — handles tasks, streak
-  private nodeApi = "https://student-performance-prediction-system-1-cggu.onrender.com";
+  // Node/Express backend — tasks, streak, subject prediction
+  private nodeApi = "https://student-performance-prediction-system-1v50.onrender.com/api";
 
-  // Flask/Python ML backend — needs its OWN separate Render service
-  // Deploy app.py separately and replace this URL
-  private pythonApi = "https://<YOUR-FLASK-RENDER-URL>";
+  // Flask/Python ML backend — AI recommendations
+  private pythonApi = "https://student-performance-prediction-system-1-cggu.onrender.com";
 
   constructor(private http: HttpClient) {}
 
@@ -29,8 +28,6 @@ export class TaskService {
     return this.http.delete(`${this.nodeApi}/tasks/${id}`);
   }
 
-  // NOTE: On your backend, make sure the streak route is defined BEFORE
-  // the generic /tasks/:id route, otherwise Express captures "streak" as an id
   getStreak(userId: string) {
     return this.http.get(`${this.nodeApi}/tasks/streak/${userId}`);
   }
