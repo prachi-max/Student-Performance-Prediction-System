@@ -1,0 +1,27 @@
+<div class="auth-container">
+
+  <div class="auth-card">
+
+    <h2>Create Account</h2>
+    <p class="subtitle">Join StudentTracker today</p>
+
+    <form (ngSubmit)="register()">
+
+      <input type="text" placeholder="Name" [(ngModel)]="user.name" name="name">
+
+      <input type="email" placeholder="Email" [(ngModel)]="user.email" name="email">
+
+      <input type="text" placeholder="Phone" [(ngModel)]="user.phone" name="phone">
+
+      <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password">
+
+      <button type="submit">Register</button>
+
+    </form>
+
+  </div>
+
+  <div *ngIf="successMessage" class="success-box">
+  {{ successMessage }}
+</div>
+</div>

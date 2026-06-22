@@ -1,0 +1,59 @@
+<div class="card">
+
+  <!-- SUCCESS BANNER — FIX: showSuccess was set in .ts but never shown in template -->
+  <div class="success-banner" *ngIf="showSuccess">
+    ✅ Task added successfully! Redirecting to progress...
+  </div>
+
+  <div class="header">
+    <div class="header-icon">+</div>
+    <div class="header-text">
+      <h2>Add Study Task</h2>
+      <p>Plan your learning effectively</p>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <div class="grid">
+
+      <div>
+        <label>Subject *</label>
+        <input type="text" placeholder="e.g. Mathematics, Python" [(ngModel)]="task.subject">
+      </div>
+
+      <div>
+        <label>Task Title *</label>
+        <input type="text" placeholder="e.g. Complete Chapter 3 Practice" [(ngModel)]="task.title">
+      </div>
+
+      <div class="full">
+        <label>Description</label>
+        <textarea placeholder="What exactly do you need to do?" [(ngModel)]="task.description"></textarea>
+      </div>
+
+      <div>
+        <label>Difficulty</label>
+        <select [(ngModel)]="task.difficulty">
+          <option value="">Select Difficulty</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Deadline</label>
+        <input type="date" [(ngModel)]="task.deadline">
+        <div class="hint">When do you want to complete this?</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button class="btn" [disabled]="isLoading" (click)="addTask()">
+      {{ isLoading ? 'Adding...' : 'Add Task' }}
+    </button>
+  </div>
+
+</div>

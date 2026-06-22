@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    margin: 0;
+    padding: 40px;
+}
+
+/* Card */
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(90deg, #4b5cff, #7b2cff);
+    color: white;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-icon {
+    width: 45px;
+    height: 45px;
+    background: white;
+    color: #5a3cff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-text h2 {
+    margin: 0;
+}
+
+.header-text p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Form */
+.form-container {
+    padding: 45px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+    color: #444;
+}
+
+input, select, textarea {
+    width: 96%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #6a5cff;
+    box-shadow: 0 0 0 2px rgba(106,92,255,0.1);
+}
+
+textarea {
+    resize: none;
+    height: 120px;
+}
+
+.full {
+    grid-column: span 2;
+}
+
+.hint {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* Button */
+.button-container {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(90deg, #4b5cff, #7b2cff);
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}

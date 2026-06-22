@@ -1,0 +1,18 @@
+_id,userId,subject,title,description,difficulty,deadline,status,performance
+6a0ca8232eb1171b90e3d7f4,6a0b300bf10ea9d4b85295c6,web development,practice on online stimulator,practice the problems ,Medium,2026-05-20T00:00:00.000Z,Completed,80
+6a0d582faf153207bed147b9,6a0b300bf10ea9d4b85295c6,data science,problem solving,previous years exam paper problems solving  ,Easy,2026-05-21T00:00:00.000Z,Completed,40
+6a0d58bcaf153207bed147bc,6a0b300bf10ea9d4b85295c6,Advanced web development,understanding the Frameworks,how the framework is performed ,Hard,2026-05-23T00:00:00.000Z,Completed,70
+6a0d5956af153207bed147bf,6a0b300bf10ea9d4b85295c6,software engineering,clear the concept ,clear concept properly with example ,Medium,2026-05-22T00:00:00.000Z,Completed,50
+6a0d5a3aaf153207bed147c2,6a0b300bf10ea9d4b85295c6,NGT,Database create,In the SQL create the database,Hard,2026-05-21T00:00:00.000Z,Completed,75
+6a0d5a9faf153207bed147c5,6a0b300bf10ea9d4b85295c6,Maths,problem solving,solve problems of maths ,Hard,2026-05-25T00:00:00.000Z,Pending,30
+6a0d5b2faf153207bed147c8,6a0b300bf10ea9d4b85295c6,green computing ,revision,revised notes ,Easy,2026-05-21T00:00:00.000Z,Completed,86
+6a0d5befaf153207bed147cb,6a0b300bf10ea9d4b85295c6,IOT ,iot projects,Understand the Project of internet of thnigs,Medium,2026-05-28T00:00:00.000Z,Pending,35
+6a0d5cdcaf153207bed147d0,6a0b300bf10ea9d4b85295c6,security in computing,understand the concept,clear the concept ,Medium,2026-05-29T00:00:00.000Z,Pending,33
+6a0d5d35af153207bed147d3,6a0b300bf10ea9d4b85295c6,business intellegence,practice problems,practice the problems on sql ,Hard,2026-05-31T00:00:00.000Z,Completed,79
+6a0d5ea9af153207bed147d6,6a0b300bf10ea9d4b85295c6,DBMS,create query ,create different query,Medium,2026-06-02T00:00:00.000Z,Pending,28
+6a0d5f6caf153207bed147e5,6a0b300bf10ea9d4b85295c6,Operating System,CPU Scheduling,Write scheduling algorithms,Medium,2026-06-04T00:00:00.000Z,Pending,43
+6a0d5f91af153207bed147e8,6a0b300bf10ea9d4b85295c6,Java Programming,OOP Concepts,Implement inheritance examples,Easy,2026-06-06T00:00:00.000Z,Completed,90
+6a0d5fcaaf153207bed147eb,6a0b300bf10ea9d4b85295c6,Cloud Computing,AWS Setup,Configure cloud deployment,Hard,2026-07-06T00:00:00.000Z,Pending,20
+6a0d6002af153207bed147ee,6a0b300bf10ea9d4b85295c6,Python,practice in lab,practice in lab ,Easy,2026-06-09T00:00:00.000Z,Pending,45
+6a0d6070af153207bed147f5,6a0b300bf10ea9d4b85295c6,C Programming,practice in lab on stimulator,practice in lab on the online stimulator ,Medium,2026-06-12T00:00:00.000Z,Pending,52
+6a0d627caf153207bed147f8,6a0b300bf10ea9d4b85295c6,Data Structures,Hard ,data practice structures ,Hard,2026-06-11T00:00:00.000Z,Pending,41

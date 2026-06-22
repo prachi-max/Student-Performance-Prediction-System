@@ -1,0 +1,212 @@
+<!-- PROGRESS PAGE -->
+<div class="progress-page">
+
+  <!-- TOP HEADER -->
+  <div class="page-header">
+    <div class="user-greeting">
+      <div class="avatar">{{ userInitial }}</div>
+      <div>
+        <h1>Hello, {{ userName }} 👋</h1>
+        <p>Track your academic performance</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="speak-btn" (click)="speakPerformanceReport()" [disabled]="isSpeaking">
+        {{ isSpeaking ? '🔊 Speaking...' : '🔊 Read Report' }}
+      </button>
+      <button class="speak-btn stop" (click)="stopSpeaking()" *ngIf="isSpeaking">⏹ Stop</button>
+      <a routerLink="/add-task" class="add-task-btn">+ Add Task</a>
+    </div>
+  </div>
+
+  <!-- STAT CARDS -->
+  <div class="stat-grid">
+    <div class="stat-card blue">
+      <div class="stat-icon">📋</div>
+      <div class="stat-value">{{ total }}</div>
+      <div class="stat-label">Total Tasks</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-icon">✅</div>
+      <div class="stat-value">{{ completed }}</div>
+      <div class="stat-label">Completed</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="stat-icon">⏳</div>
+      <div class="stat-value">{{ pending }}</div>
+      <div class="stat-label">Pending</div>
+    </div>
+    <div class="stat-card purple">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-value">{{ percentage }}%</div>
+      <div class="stat-label">Completion</div>
+    </div>
+    <div class="stat-card gold">
+      <div class="stat-icon">🔥</div>
+      <div class="stat-value">{{ currentStreak }}</div>
+      <div class="stat-label">Day Streak</div>
+    </div>
+    <div class="stat-card teal">
+      <div class="stat-icon">📊</div>
+      <div class="stat-value">{{ predictedPerformance | number:'1.0-0' }}%</div>
+      <div class="stat-label">Performance</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar-section">
+    <div class="progress-label">
+      <span>Overall Progress</span>
+      <span>{{ percentage }}%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" [style.width.%]="percentage"></div>
+    </div>
+    <div class="performance-status">{{ getPerformanceStatus() }}</div>
+  </div>
+
+  <!-- SUBJECT PERFORMANCE -->
+  <div class="section-grid" *ngIf="subjectPrediction.length > 0">
+
+    <div class="subject-cards">
+      <h3>📚 Subject Performance</h3>
+      <div class="subject-row strongest" *ngIf="topSubject">
+        <span class="subj-label">🏆 Strongest</span>
+        <span class="subj-name">{{ topSubject.subject }}</span>
+        <span class="subj-score">{{ topSubject.performance | number:'1.0-0' }}%</span>
+      </div>
+      <div class="subject-row average" *ngIf="averageSubject">
+        <span class="subj-label">📊 Average</span>
+        <span class="subj-name">{{ averageSubject.subject }}</span>
+        <span class="subj-score">{{ averageSubject.performance | number:'1.0-0' }}%</span>
+      </div>
+      <div class="subject-row weakest" *ngIf="weakSubject">
+        <span class="subj-label">⚠️ Weakest</span>
+        <span class="subj-name">{{ weakSubject.subject }}</span>
+        <span class="subj-score">{{ weakSubject.performance | number:'1.0-0' }}%</span>
+      </div>
+
+      <div class="all-subjects">
+        <div class="subject-bar-row" *ngFor="let s of subjectPrediction">
+          <span class="subject-name-sm">{{ s.subject }}</span>
+          <div class="subject-bar-track">
+            <div class="subject-bar-fill" [style.width.%]="s.performance"></div>
+          </div>
+          <span class="subject-pct">{{ s.performance | number:'1.0-0' }}%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI RECOMMENDATIONS -->
+    <div class="recommendations">
+      <h3>🤖 AI Recommendations</h3>
+      <div class="rec-list" *ngIf="aiRecommendations.length > 0">
+        <div class="rec-item" *ngFor="let r of aiRecommendations">
+          <span class="rec-subject">{{ r.subject }}</span>
+          <span class="rec-action">{{ r.recommendation }}</span>
+        </div>
+      </div>
+      <div class="rec-list" *ngIf="aiRecommendations.length === 0">
+        <div class="rec-item" *ngFor="let t of getAITasks()">
+          <span class="rec-subject">{{ t.subject }}</span>
+          <span class="rec-action">{{ t.title }}</span>
+          <span class="rec-status">{{ t.status }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SUGGESTIONS -->
+  <div class="suggestions-section">
+    <h3>💡 Suggestions</h3>
+    <div class="suggestion-pills">
+      <span class="pill" *ngFor="let s of getSuggestions()">✔ {{ s }}</span>
+    </div>
+    <div class="motivation-banner">🏆 {{ getMotivation() }}</div>
+  </div>
+
+  <!-- MY TASKS TABLE -->
+  <div class="tasks-section">
+    <div class="tasks-header">
+      <h3>📝 My Tasks</h3>
+      <!-- FIX: Filter buttons now have working (click) handlers -->
+      <div class="filter-btns">
+        <button
+          class="filter-btn"
+          [class.active-filter]="activeFilter === 'All'"
+          (click)="setFilter('All')">All ({{ total }})
+        </button>
+        <button
+          class="filter-btn"
+          [class.active-filter]="activeFilter === 'Pending'"
+          (click)="setFilter('Pending')">Pending ({{ pending }})
+        </button>
+        <button
+          class="filter-btn"
+          [class.active-filter]="activeFilter === 'Completed'"
+          (click)="setFilter('Completed')">Completed ({{ completed }})
+        </button>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="tasks.length === 0">
+      <p>No tasks yet. <a routerLink="/add-task">Add your first task →</a></p>
+    </div>
+
+    <table *ngIf="tasks.length > 0">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Subject</th>
+          <th>Difficulty</th>
+          <th>Deadline</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of getPaginatedTasks()">
+          <td>{{ task.title }}</td>
+          <td>{{ task.subject }}</td>
+          <td>
+            <span class="difficulty"
+              [ngClass]="{
+                'easy':   task.difficulty === 'Easy',
+                'medium': task.difficulty === 'Medium',
+                'hard':   task.difficulty === 'Hard'
+              }">
+              {{ task.difficulty }}
+            </span>
+          </td>
+          <td>{{ task.deadline | date:'dd MMM yyyy' }}</td>
+          <td>
+            <span class="status"
+              [ngClass]="{
+                'completed-status': task.status === 'Completed',
+                'pending-status':   task.status === 'Pending'
+              }">
+              {{ task.status }}
+            </span>
+          </td>
+          <td>
+            <button class="edit-btn" *ngIf="task.status === 'Pending'" (click)="markComplete(task)">✔ Done</button>
+            <button class="delete-btn" (click)="deleteTask(task._id)">🗑</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- PAGINATION -->
+    <div class="task-pagination" *ngIf="getFilteredTasks().length > tasksPerPage">
+      <button class="arrow-btn" (click)="previousTasks()" [disabled]="currentPage === 0">❮</button>
+      <div class="pagination-info">
+        Showing {{ currentPage * tasksPerPage + 1 }} – {{ getEndIndex() }}
+        of {{ getFilteredTasks().length }} tasks
+      </div>
+      <button class="arrow-btn" (click)="nextTasks()"
+        [disabled]="(currentPage + 1) * tasksPerPage >= getFilteredTasks().length">❯</button>
+    </div>
+  </div>
+
+</div>

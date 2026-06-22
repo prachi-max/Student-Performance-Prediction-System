@@ -1,0 +1,99 @@
+<div class="article-page">
+
+   <!-- HEADER -->
+  <div class="header">
+   <h1>Smart Learning <span>Insights</span> for Students</h1>
+<p>
+Track your performance, discover personalized study content, and improve your academic journey with smart insights.
+</p>
+  </div>
+
+  <!-- TOPICS -->
+  <div class="topics">
+    <span 
+    *ngFor="let topic of topics"
+    (click)="selectTopic(topic)"
+    [class.active]="selectedTopic === topic">
+    
+    {{ topic }}
+    
+  </span>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="main-layout">
+
+    <!-- LEFT: ARTICLES -->
+    <div class="articles-grid">
+
+      <div class="card" *ngFor="let article of articles">
+
+        <div class="card-img"></div>
+
+        <div class="card-body">
+          <h3>{{ article.title }}</h3>
+
+          <!-- SHORT TEXT -->
+          <p *ngIf="!article.expanded">
+            {{ article.desc | slice:0:90 }}...
+          </p>
+
+          <!-- FULL TEXT -->
+          <p *ngIf="article.expanded">
+            {{ article.desc }}
+          </p>
+
+          <!-- BUTTON -->
+ <button class="read-btn" (click)="openArticle(article)">
+      Read More →
+    </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    
+
+      <!-- AUTHOR -->
+     <div class="sidebar">
+
+  <!-- 🧠 YOUR STUDY DNA -->
+  <div class="box">
+    <h3> Your Study DNA</h3>
+    <p> Fast Learner in Theory</p>
+    <p> Needs practice in Problem Solving</p>
+    <p> Best Time: Evening Focus</p>
+  </div>
+
+  <!-- 🔥 TODAY’S BOOST -->
+  <div class="box">
+    <h3> Today’s Boost</h3>
+    <p> Try 25 min Deep Work</p>
+    <p> Revise 1 weak topic</p>
+    <p> Avoid distractions for 2 hrs</p>
+  </div>
+
+  <!-- 🧩 MICRO CHALLENGE -->
+  <div class="box">
+    <h3> Daily Challenge</h3>
+    <p>Solve 5 MCQs without help</p>
+    <p>⏱ Time Limit: 10 mins</p>
+    <p> Reward: +10 Focus Points</p>
+  </div>
+
+  <!-- 🎯 FUTURE YOU -->
+  <div class="box">
+    <h3> Future You</h3>
+    <p>If you stay consistent:</p>
+    <p> Score can reach 85%</p>
+    <p> Ready for top placements</p>
+  </div>
+
+</div>
+
+    </div>
+
+  </div>
+

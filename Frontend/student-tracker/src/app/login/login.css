@@ -1,0 +1,167 @@
+/* Full background */
+
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg,#1e1b4b,#6d28d9);
+}
+
+/* Card */
+
+.auth-card {
+  background: white;
+  padding: 40px;
+  width: 350px;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* Title */
+
+.auth-card h2 {
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+/* Subtitle */
+
+.subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+}
+
+input:focus {
+  border-color: #6d28d9;
+  box-shadow: 0 0 6px rgba(109,40,217,0.3);
+}
+
+/* Button */
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg,#6d28d9,#9333ea);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* success full screen */
+
+.success-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg,#1e1b4b,#6d28d9);
+  color: white;
+  text-align: center;
+}
+
+/* animated check */
+
+.checkmark {
+  font-size: 60px;
+  margin-bottom: 20px;
+  animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.auth-card{
+  background:white;
+  padding:45px;
+  width:420px;
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.15);
+  text-align:center;
+}
+.button-group{
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.demo-btn{
+
+  flex: 1;
+
+  padding: 12px;
+
+  border: 1px solid #6d28d9;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #6d28d9;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.demo-btn:hover{
+
+  background: #f3ebff;
+}
+
+.login-btn{
+
+  flex: 2;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: linear-gradient(
+    135deg,
+    #6d28d9,
+    #9333ea
+  );
+
+  color: white;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.login-btn:hover{
+
+  transform: translateY(-2px);
+}

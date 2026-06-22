@@ -1,0 +1,13 @@
+# Angular
+Frontend/node_modules
+Frontend/dist
+Frontend/.angular
+
+# Python
+Backend/venv
+Backend/__pycache__
+*.pyc
+
+# Environment
+.env
+node_modules

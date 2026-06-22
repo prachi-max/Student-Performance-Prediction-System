@@ -1,0 +1,62 @@
+<div class="auth-container">
+
+  <div *ngIf="loginSuccess" class="success-screen">
+    <div class="checkmark">✔</div>
+    <h2>Welcome Back!</h2>
+    <p>Login successful 🎉</p>
+  </div>
+
+  <div class="auth-card" *ngIf="!loginSuccess">
+
+  <div class="login-icon">
+    🎓
+  </div>
+
+  <h2>Welcome Back</h2>
+
+  <p class="subtitle">
+    Sign in to continue tracking your academic performance and AI-powered insights.
+  </p>
+
+  <div class="demo-box">
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+  <input
+    type="email"
+    placeholder="Enter Email"
+    formControlName="email">
+
+  <input
+    type="password"
+    placeholder="Enter Password"
+    formControlName="password">
+
+  <div class="button-group">
+
+    <button
+      type="button"
+      class="demo-btn"
+      (click)="fillDemo()">
+
+      Demo Account
+
+    </button>
+
+    <button
+      type="submit"
+      class="login-btn"
+      [disabled]="isLoading">
+
+      {{ isLoading ? 'Logging in...' : 'Login' }}
+
+    </button>
+
+  </div>
+
+</form>
+
+</div>
+
+</div>

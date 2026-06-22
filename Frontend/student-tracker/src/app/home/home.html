@@ -1,0 +1,182 @@
+
+<section class="hero">
+
+  <div class="hero-content">
+    
+    <h1>
+      Track Your Study <br>
+      <span>Performance Smartly</span>
+    </h1>
+
+    <p>
+      Manage tasks, track academic progress, and improve learning efficiency
+      using <br> the Student Performance Tracker.
+    </p>
+
+    <div class="hero-buttons">
+   <button (click)="startTracking()" class="start-btn">Start Tracking</button>
+  <button (click)="goToArticles()" class="explore-btn">Explore Guidance</button>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <strong>500+</strong>
+        <p>Students</p>
+      </div>
+
+      <div>
+        <strong>1200+</strong>
+        <p>Tasks</p>
+      </div>
+
+      <div>
+        <strong>300+</strong>
+        <p>Articles</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hero-slider">
+  <div class="slide-track">
+    <img src="assets/student1.jpg">
+    <img src="assets/student2.jpg">
+    <img src="assets/student3.jpg">
+
+    <!-- duplicate -->
+    <img src="assets/student1.jpg">
+    <img src="assets/student2.jpg">
+    <img src="assets/student3.jpg">
+  </div>
+</div>
+
+</section>
+
+<div class="ai-home-grid">
+
+
+</div><div class="feature-strip">
+
+  <!-- CARD 1 -->
+
+  <div class="feature-item">
+
+    <div class="feature-icon purple">
+      📊
+    </div>
+
+    <div>
+
+      <h3>Track Progress</h3>
+
+      <p>
+        Monitor your daily and
+        weekly academic progress.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- CARD 2 -->
+
+  <div class="feature-item">
+
+    <div class="feature-icon blue">
+      🤖
+    </div>
+
+    <div>
+
+      <h3>AI Predictions</h3>
+
+      <p>
+        Get AI-powered predictions
+        about your performance.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- CARD 3 -->
+
+  <div class="feature-item">
+
+    <div class="feature-icon orange">
+      💡
+    </div>
+
+    <div>
+
+      <h3>Smart Recommendations</h3>
+
+      <p>
+        Receive personalized study
+        tips and suggestions.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- CARD 4 -->
+
+  <div class="feature-item">
+
+    <div class="feature-icon green">
+      🎯
+    </div>
+
+    <div>
+
+      <h3>Achieve Goals</h3>
+
+      <p>
+        Stay consistent and achieve
+        your academic goals.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<section class="articles">
+
+<h2>Popular Guidance Articles</h2>
+
+<div class="article-grid">
+
+<div class="article-card">
+<img src="assets/article1.jpeg">
+<h3>Study Time Management</h3>
+<p>Learn how to organize study schedules effectively.</p>
+</div>
+
+<div class="article-card">
+<img src="assets/article2.jpg">
+<h3>Exam Preparation Tips</h3>
+<p>Smart strategies to prepare for exams efficiently.</p>
+</div>
+
+<div class="article-card">
+<img src="assets/article3.png">
+<h3>Improve Concentration</h3>
+<p>Techniques to increase focus during study.</p>
+</div>
+</div>
+</section>
+
+<!--  FLOAT ICON -->
+<div class="calendar-float" (click)="toggleCalendar()">📅</div>
+
+<div class="calendar-panel" *ngIf="showCalendar">
+  <div class="calendar-header">
+    <p><span><b> Calendar</b></span></p>
+    <span class="close-btn" (click)="toggleCalendar()">✖</span>
+  </div>
+  <mat-calendar (selectedChange)="onDateSelect($event)"></mat-calendar>
+</div>

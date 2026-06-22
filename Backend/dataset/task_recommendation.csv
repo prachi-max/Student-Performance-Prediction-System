@@ -1,0 +1,9 @@
+subject,difficulty,status,performance,pending_tasks,completed_tasks,recommendation
+
+DBMS,Hard,Pending,28,7,2,Revise DBMS concepts
+Python,Medium,Pending,45,4,5,Practice Python coding
+Java Programming,Easy,Completed,85,1,12,Build Java project
+Web Development,Medium,Completed,72,2,9,Create portfolio website
+Data Science,Hard,Pending,38,5,3,Practice ML algorithms
+Operating System,Hard,Pending,31,6,2,Study OS concepts
+AI,Easy,Completed,91,1,15,Build AI application
