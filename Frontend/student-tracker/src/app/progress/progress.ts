@@ -55,25 +55,30 @@ export class Progress implements OnInit {
     private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit() {
+   ngOnInit() {
     this.userName = localStorage.getItem('userName') || '';
     this.userEmail = localStorage.getItem('userEmail') || '';
     this.userInitial = this.userName.charAt(0).toUpperCase();
 
     const userId = localStorage.getItem('userId');
-    if (!userId) return;
+    
+    // Safety check: Prevent execution if user data is missing or corrupted
+    if (!userId || userId === 'null' || userId === 'undefined') {
+      console.warn("Session missing. Redirecting or waiting for authentication...");
+      return;
+    }
 
-    this.loadTasks();
+    // Pass the confirmed userId down into loaders
+    this.loadTasks(userId);
     this.loadStreak(userId);
     this.loadPrediction(userId);
-    this.loadSubjectPrediction();
-    this.loadRecommendations();
+    this.loadSubjectPrediction(userId);
+    this.loadRecommendations(userId);
   }
 
-  // ── DATA LOADERS ────────────────────────────────────────────────────────
+  // ── OPTIMIZED DATA LOADERS ────────────────────────────────────────────────────────
 
-  loadTasks() {
-    const userId = localStorage.getItem('userId')!;
+  loadTasks(userId: string) {
     this.taskService.getTasks(userId).subscribe({
       next: (res: any) => {
         this.tasks = res;
@@ -109,7 +114,8 @@ export class Progress implements OnInit {
     });
   }
 
-  loadSubjectPrediction() {
+  loadSubjectPrediction(userId: string) {
+    // Pass user identity down to your API layout if your backend route accepts it
     this.taskService.getSubjectPrediction().subscribe({
       next: (data: any) => {
         const raw = data.result;
@@ -130,7 +136,7 @@ export class Progress implements OnInit {
     });
   }
 
-  loadRecommendations() {
+  loadRecommendations(userId: string) {
     this.taskService.getAIRecommendations().subscribe({
       next: (data: any) => {
         const raw = data.result;
@@ -144,20 +150,31 @@ export class Progress implements OnInit {
 
   // ── TASK ACTIONS ─────────────────────────────────────────────────────────
 
+   // ── TASK ACTIONS ─────────────────────────────────────────────────────────
+
   markComplete(task: any) {
     task.status = 'Completed';
     this.taskService.updateTask(task._id, task).subscribe({
-      next: () => this.loadTasks(),
+      // FIXED: Pass the local storage userId when reloading tasks
+      next: () => {
+        const userId = localStorage.getItem('userId') || '';
+        this.loadTasks(userId);
+      },
       error: (err) => console.error('Update error:', err)
     });
   }
 
   deleteTask(id: string) {
     this.taskService.deleteTask(id).subscribe({
-      next: () => this.loadTasks(),
+      // FIXED: Pass the local storage userId when reloading tasks
+      next: () => {
+        const userId = localStorage.getItem('userId') || '';
+        this.loadTasks(userId);
+      },
       error: (err) => console.error('Delete error:', err)
     });
   }
+
 
   // ── FILTER (FIX: was dead buttons with no handler) ──────────────────────
   setFilter(filter: 'All' | 'Pending' | 'Completed') {
@@ -269,4 +286,5 @@ export class Progress implements OnInit {
       rate: s.total > 0 ? Math.round((s.completed / s.total) * 100) : 0
     }));
   }
+  
 }
